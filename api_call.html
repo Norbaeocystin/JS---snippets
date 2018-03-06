@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div id="container">
+    <p id = 'cont'></p>
+</div>
+<div id="demo">
+<h1>The XMLHttpRequest Object</h1>
+<button type="button" onclick="api()">Change Content</button>
+</div>
+<script>
+function api() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var json = JSON.parse(this.responseText)
+        var price = json.result.XETHZEUR.h[0]
+      document.getElementById("demo").innerHTML = price;
+    }
+  };
+  xhttp.open("GET", "https://api.kraken.com/0/public/Ticker?pair=XETHZEUR", true)
+  xhttp.send();
+}
+function api2() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var json = JSON.parse(this.responseText);
+        var price = json.result.XETHZEUR.a[0];
+        var ind = price.indexOf('.')
+        price = price.substr(0,ind+3)
+        document.getElementById("container").innerHTML = price;
+        console.log(this.responseText)
+    }
+  };
+  xhttp.open("GET", "https://api.kraken.com/0/public/Ticker?pair=XETHZEUR", true)
+  xhttp.send();
+}
+var my = api2();
+var myVar = setInterval(api2, 5000);
+</script>
+</body>
