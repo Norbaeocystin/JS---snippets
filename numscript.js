@@ -1,3 +1,5 @@
+/* staticstics function to get more info from arrays
+*/
 function Reshape(array, reshape)// change flatten array to nested array
 /*
 Reshape([1,2,3,4],2)
@@ -62,6 +64,10 @@ Variance([1,2,3,4])
 }
 
 function Covariance(array1, array2) //return covariance of two arrays
+/*
+Covariance([1,2,3],[3,4,6])
+1.5
+*/
 {
   var mean1 = Mean(array1);
   var mean2 = Mean(array2)
@@ -72,3 +78,16 @@ function Covariance(array1, array2) //return covariance of two arrays
   }
   return sum/(array1.length - 1)
 }
+
+function Correlation(array1, array2) //returns correlation of two arrays
+/*
+Correlation([1,2,3],[2,3,4])
+1
+*/
+{
+  var covariance = Covariance(array1, array2);
+  sd1 = StandardDeviation(array1);
+  sd2 = StandardDeviation(array2);
+  return covariance/(sd1*sd2)
+}
+  
