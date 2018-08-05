@@ -26,3 +26,16 @@ Flatten([[1,2],[3,4]])
   }
 return Flattened
 }
+
+function Mean(array) //return mean from flatten array
+/*
+Mean([1,2,3,4])
+2.5
+*/
+{
+  var sum = array.reduce(function (total, value, index, array) {
+    return total + value;
+} );
+  var mean = sum/array.length;
+  return mean;
+}
