@@ -60,3 +60,15 @@ Variance([1,2,3,4])
   var sum = squaredDiff.reduce(function (total, value, index, array) {return total + value});
   return (sum/(array.length -1))
 }
+
+function Covariance(array1, array2) //return covariance of two arrays
+{
+  var mean1 = Mean(array1);
+  var mean2 = Mean(array2)
+  var sum = 0;
+  for ( i in array1)
+  {
+    sum += (array1[i] - mean1)*(array2[i] - mean2)
+  }
+  return sum/(array1.length - 1)
+}
