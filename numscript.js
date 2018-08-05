@@ -39,3 +39,24 @@ Mean([1,2,3,4])
   var mean = sum/array.length;
   return mean;
 }
+
+function StandardDeviation(array) //return standard deviaton of array
+/*
+StandardDeviation([1,2,3,4])
+1.2909944487358056
+*/
+{
+  return Variance(array)**0.5
+}
+
+function Variance(array) //return variance of array
+/*
+Variance([1,2,3,4])
+1.6666666666666667
+*/
+{
+  var mean = Mean(array)
+  var squaredDiff = array.map(function (value, index, array) {return (value - mean)**2} );
+  var sum = squaredDiff.reduce(function (total, value, index, array) {return total + value});
+  return (sum/(array.length -1))
+}
