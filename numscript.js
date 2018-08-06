@@ -99,7 +99,7 @@ Frequency([1,2,2,3,3,3])
 {
   array.sort()
   var result = {}
-  for (i in array) //find solution where this loop is not neccessary
+  for (i in Array.from(new Set(array))) //find solution where this loop is not neccessary
   {
     result[array[i]] = 0
    }
