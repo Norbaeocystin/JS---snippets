@@ -97,8 +97,9 @@ Frequency([1,2,2,3,3,3])
 {1: 1, 2: 2, 3: 3}
 */
 {
+  array.sort()
   var result = {}
-  for (i in array)
+  for (i in array) //find solution where this loop is not neccessary
   {
     result[array[i]] = 0
    }
@@ -109,4 +110,30 @@ Frequency([1,2,2,3,3,3])
   return result
  }
     
-  
+function Histogram(array, CanvasId, color = "#592A71", padding = 0.95) //draw distribution for array in canvas
+/*
+array is array of numbers not continual values
+try different setting color, padding
+CanvasId is for iddentification of Canvas element
+*/
+{
+  var frequency = Frequency(array);
+  var c = document.getElementById(CanvasId);
+  var ctx = c.getContext("2d");
+  ctx.fillStyle = color
+  var width = c.width
+  var height = c.height
+  var values = Object.values(frequency)
+  var keys = Object.keys(frequency)
+  var max = Math.max.apply(null, values)
+  var key_height = (height/max)* padding
+  var key_width = width/values.length
+  var small_diff = (key_width - (key_width * padding))/2
+  var x = 0;
+  for (i in keys)
+  {
+    var i_height = values[i] * key_height;
+    ctx.fillRect(x + small_diff, height - (values[i]*key_height), key_width * padding, values[i]*key_height)
+    x += key_width
+  }
+}
