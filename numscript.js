@@ -99,9 +99,10 @@ Frequency([1,2,2,3,3,3])
 {
   array.sort()
   var result = {}
-  for (i in Array.from(new Set(array))) //find solution where this loop is not neccessary
+  var uniqueArray = Array.from(new Set(array))
+  for (i in uniqueArray) //find solution where this loop is not neccessary
   {
-    result[array[i]] = 0
+    result[uniqueArray[i]] = 0
    }
   for (i in array)
   {
