@@ -90,4 +90,23 @@ Correlation([1,2,3],[2,3,4])
   sd2 = StandardDeviation(array2);
   return covariance/(sd1*sd2)
 }
+
+function Frequency(array) //keys are unique elements in array and values are counts for elements
+/*
+Frequency([1,2,2,3,3,3])
+{1: 1, 2: 2, 3: 3}
+*/
+{
+  var result = {}
+  for (i in array)
+  {
+    result[array[i]] = 0
+   }
+  for (i in array)
+  {
+    result[array[i]] += 1
+   }
+  return result
+ }
+    
   
