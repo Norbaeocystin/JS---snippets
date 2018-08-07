@@ -242,6 +242,7 @@ function PieChart(object, CanvasId) //generates PieChart with Random colors
 /*
 example of object = {'USA':5, 'Canada':3, 'China':4, 'Japan':2, 'Germany':2}
 CanvasId is for Canvas selection
+Need to do labels.
 */
 {
   
