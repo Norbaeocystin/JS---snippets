@@ -167,13 +167,51 @@ Lots of work here
   var min_y = Math.min.apply(null, Y);
   var NormX = X.map(function (value, index, array) {return ((value/max_x) * (width*0.90)) + x_line});
   var NormY = Y.map(function (value, index, array) {return  (height - ((value/max_y)*height*0.90)) + (y_line*0.05)});
-  console.log(NormX);
-  console.log(NormY);
   for (i in NormX)
   {
     ctx.beginPath();
     ctx.arc(NormX[i], NormY[i], x_line/2, 0, 2 * Math.PI, false);
     ctx.fill(); 
     ctx.stroke()
+  }
+}
+
+function Plot(array, CanvasId, color = "#592A71") //draw plot for array e.g time serie with constant distance between points
+/*
+CanvasId is for iddentification of Canvas element
+Lots of work here 
+*/
+{
+  var Y = array;
+  var X = []
+  var x = 1;
+  for (i in Y)
+  {
+    X.push(x)
+    x += 1
+  }
+  var c = document.getElementById(CanvasId);
+  var ctx = c.getContext("2d");
+  ctx.fillStyle = color
+  ctx.strokeStyle = color
+  var width = c.width
+  var height = c.height
+  var x_line = width * 0.05
+  var y_line = height * 0.95
+  var max_y = Math.max.apply(null, Y);
+  var NormY  = Y.map(function (value, index, array) {return  height - (height * ((value*0.95)/max_y))});
+  var NormX = X.map(function(value, index, array){ return (value/X.length)*width})
+  console.log(NormY);
+  console.log(NormX);
+  var PosX = 0;
+  var PosY = NormY[1];
+  for  (i in NormY)
+  {
+    ctx.beginPath();
+    ctx.moveTo(PosX, PosY);
+    ctx.lineTo(NormX[i], NormY[i]);
+    ctx.stroke()
+    PosX = NormX[i]
+    PosY = NormY[i]
   }
 }
