@@ -215,19 +215,34 @@ Lots of work here
     PosY = NormY[i]
   }
 }
+
+function PieChart(object, CanvasId) //generates PieChart with Random colors
 /*
-//ctx.beginPath();
-ctx.moveTo(100,75);
-ctx.arc(100, 75, 50, 0* Math.PI, 0.1* Math.PI, false);
-ctx.closePath();
-ctx.fillStyle = '#'+Math.random().toString(16).substr(-6);;
-ctx.fill()
-//ctx.stroke();
-ctx.beginPath();
-ctx.moveTo(100,75);
-ctx.arc(100, 75, 50, 0.1* Math.PI, 0.5 * Math.PI, false);
-ctx.closePath();
-ctx.fillStyle = '#'+Math.random().toString(16).substr(-6);; // random color generator
-ctx.fill()
-//ctx.stroke();
+example of object = {'USA':5, 'Canada':3, 'China':4, 'Japan':2, 'Germany':2}
+CanvasId is for Canvas selection
 */
+{
+  
+var c = document.getElementById(CanvasId);
+var ctx = c.getContext("2d");
+var width = c.width
+var height = c.height
+var values = Object.values(object)
+var sum = values.reduce(function (total, value, index, array) {return total + value} );
+var sum = 2/sum
+console.log(sum)
+var min = Math.min.apply(null, [width/2, height/2])
+var keys = Object.keys(object)
+var NormValues = values.map(function(value, index, array){ return value * sum})
+var startAngle = 0
+for (i in keys)
+  {
+  ctx.beginPath();
+  ctx.moveTo(min, min);
+  ctx.arc(min, min, min*0.90, startAngle* Math.PI, (startAngle + NormValues[i])* Math.PI, false);
+  ctx.closePath();
+  ctx.fillStyle = '#'+Math.random().toString(16).substr(-6);;
+  ctx.fill()
+  startAngle += NormValues[i];
+  }
+}
