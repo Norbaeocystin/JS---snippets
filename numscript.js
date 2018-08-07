@@ -215,3 +215,19 @@ Lots of work here
     PosY = NormY[i]
   }
 }
+/*
+//ctx.beginPath();
+ctx.moveTo(100,75);
+ctx.arc(100, 75, 50, 0* Math.PI, 0.1* Math.PI, false);
+ctx.closePath();
+ctx.fillStyle = '#'+Math.random().toString(16).substr(-6);;
+ctx.fill()
+//ctx.stroke();
+ctx.beginPath();
+ctx.moveTo(100,75);
+ctx.arc(100, 75, 50, 0.1* Math.PI, 0.5 * Math.PI, false);
+ctx.closePath();
+ctx.fillStyle = '#'+Math.random().toString(16).substr(-6);; // random color generator
+ctx.fill()
+//ctx.stroke();
+*/
