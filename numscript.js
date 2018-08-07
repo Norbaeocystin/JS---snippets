@@ -1,4 +1,5 @@
 /* staticstics function to get more info from arrays
+also visualisation of data in canvas
 */
 function Reshape(array, reshape)// change flatten array to nested array
 /*
@@ -29,7 +30,7 @@ Flatten([[1,2],[3,4]])
 return Flattened
 }
 
-function Normalize(array) // return array normalized from 0 - 1
+function Normalize(array) // return array normalized from 0 to 1
 /*
 Normalize([1,2,3])
 (3) [0, 0.5, 1]
