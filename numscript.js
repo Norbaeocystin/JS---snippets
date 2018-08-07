@@ -116,6 +116,7 @@ function Histogram(array, CanvasId, color = "#592A71", padding = 0.95) //draw di
 array is array of numbers not continual values
 try different setting color, padding
 CanvasId is for iddentification of Canvas element
+Needs to be done number of bins parameter for continuous values
 */
 {
   var frequency = Frequency(array);
@@ -136,5 +137,43 @@ CanvasId is for iddentification of Canvas element
     var i_height = values[i] * key_height;
     ctx.fillRect(x + small_diff, height - (values[i]*key_height), key_width * padding, values[i]*key_height)
     x += key_width
+  }
+}
+
+function ScatterPlot(array1, array2, CanvasId, color = "#592A71") //draw statterplot for array1 and array2
+/*
+CanvasId is for iddentification of Canvas element
+Lots of work here 
+*/
+{
+  var X = array1;
+  var Y = array2;
+  var c = document.getElementById(CanvasId);
+  var ctx = c.getContext("2d");
+  ctx.fillStyle = color
+  var width = c.width
+  var height = c.height
+  var x_line = width * 0.05
+  var y_line = height * 0.95
+  ctx.beginPath();
+  ctx.moveTo(x_line, height);
+  ctx.lineTo(x_line, 0);
+  ctx.moveTo(0, y_line);
+  ctx.lineTo(width, y_line);
+  ctx.stroke();
+  var max_x = Math.max.apply(null, X);
+  var min_x = Math.min.apply(null, X);
+  var max_y = Math.max.apply(null, Y);
+  var min_y = Math.min.apply(null, Y);
+  var NormX = X.map(function (value, index, array) {return ((value/max_x) * (width*0.90)) + x_line});
+  var NormY = Y.map(function (value, index, array) {return  (height - ((value/max_y)*height*0.90)) + (y_line*0.05)});
+  console.log(NormX);
+  console.log(NormY);
+  for (i in NormX)
+  {
+    ctx.beginPath();
+    ctx.arc(NormX[i], NormY[i], x_line/2, 0, 2 * Math.PI, false);
+    ctx.fill(); 
+    ctx.stroke()
   }
 }
