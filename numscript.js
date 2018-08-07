@@ -29,6 +29,27 @@ Flatten([[1,2],[3,4]])
 return Flattened
 }
 
+function Normalize(array) // return array normalized from 0 - 1
+/*
+Normalize([1,2,3])
+(3) [0, 0.5, 1]
+Normalize([-1,2,3])
+(3) [0, 0.75, 1]
+Normalize([-5,2,3])
+(3) [0, 0.875, 1]
+*/
+{
+  var min = Math.min.apply(null, array);
+  var max = Math.max.apply(null, array);
+  var diff = max - min;
+  var result = array.map(function (value, index, array)
+  {
+    return (value - min)/diff
+  } );
+  return result
+}
+
+
 function Mean(array) //return mean from flatten array
 /*
 Mean([1,2,3,4])
