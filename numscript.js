@@ -64,6 +64,21 @@ Mean([1,2,3,4])
   return mean;
 }
 
+function Median(array) //return median from array
+{
+  array.sort();
+  if (array.length%2 == 1)
+  {
+    return array[Math.round((array.length/2) - 1)]
+  }
+  if (array.length%2 == 0)
+  {
+    var med1 = array[(array.length/2) - 1];
+    var med2 = array[(array.length/2)];
+    return (med1 + med2)/2
+  }
+}
+
 function StandardDeviation(array) //return standard deviaton of array
 /*
 StandardDeviation([1,2,3,4])
