@@ -65,6 +65,19 @@ Mean([1,2,3,4])
 }
 
 function Median(array) //return median from array
+/*Median([1,2])
+1.5
+Median([1])
+1
+Median([1,2,3])
+2
+Median([1,2,3,3])
+2.5
+Median([1,2,3,3,4])
+3
+Median([1,3,4,2,3])
+3
+*/
 {
   array.sort();
   if (array.length%2 == 1)
