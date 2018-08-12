@@ -160,7 +160,23 @@ Frequency([1,2,2,3,3,3])
    }
   return result
  }
-    
+
+function LinearRegression(array1, array2) //returns slope and intercept for two arrays
+{
+  var slope;
+  var intercept;
+  var sum_x = array1.reduce(function (total, value, index, array) {return total + value});
+  var sum_y = array2.reduce(function (total, value, index, array) {return total + value});
+  var xy = array1.map(function(value, index){return value*array2[index]});
+  var sum_xy = xy.reduce(function (total, value, index, array) {return total + value});
+  var x_squared = array1.map(function(value, index){return value**2});
+  var sum_x_squared = x_squared.reduce(function (total, value, index, array) {return total + value});
+  var squared_sum_x = sum_x **2;
+  var slope = ((sum_y*sum_x_squared)-(sum_x*sum_xy))/((sum_x_squared*array1.length) - squared_sum_x);
+  var intercept = ((array1.length*sum_xy)-(sum_x*sum_y))/((sum_x_squared*array1.length) - squared_sum_x);
+  return [slope, intercept]
+}   
+ 
 function Histogram(array, CanvasId, color = "#592A71", padding = 0.95) //draw distribution for array in canvas
 /*
 array is array of numbers not continual values
