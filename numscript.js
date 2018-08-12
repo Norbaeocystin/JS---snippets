@@ -162,6 +162,10 @@ Frequency([1,2,2,3,3,3])
  }
 
 function LinearRegression(array1, array2) //returns slope and intercept for two arrays
+/*
+LinearRegression([1,2,3],[2,4,6])
+[0, 2]
+*/
 {
   var slope;
   var intercept;
