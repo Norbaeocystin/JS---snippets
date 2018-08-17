@@ -177,6 +177,9 @@ LinearRegression([1,2,3],[2,4,6])
   var denominator = mean_x_squared - (mean_x**2);
   var slope = numerator/denominator;
   var intercept = mean_y - (slope*mean_x);
+  var calculated_y = array1.map(function(value,index, array){ return (slope*value)+intercept});
+  var diff_y_squared = calculated_y.map(function(value,index,array){ return (array[index] -value )**2});
+  console.log(diff_y)
   return [slope, intercept]
 }   
  
