@@ -169,15 +169,14 @@ LinearRegression([1,2,3],[2,4,6])
 {
   var slope;
   var intercept;
-  var sum_x = array1.reduce(function (total, value, index, array) {return total + value});
-  var sum_y = array2.reduce(function (total, value, index, array) {return total + value});
-  var xy = array1.map(function(value, index){return value*array2[index]});
-  var sum_xy = xy.reduce(function (total, value, index, array) {return total + value});
-  var x_squared = array1.map(function(value, index){return value**2});
-  var sum_x_squared = x_squared.reduce(function (total, value, index, array) {return total + value});
-  var squared_sum_x = sum_x **2;
-  var slope = ((sum_y*sum_x_squared)-(sum_x*sum_xy))/((sum_x_squared*array1.length) - squared_sum_x);
-  var intercept = ((array1.length*sum_xy)-(sum_x*sum_y))/((sum_x_squared*array1.length) - squared_sum_x);
+  var mean_x = Mean(array1);
+  var mean_y = Mean(array2);
+  var mean_xy = Mean(array1.map(function (value, index, array) {return value*array2[index]} ));
+  var mean_x_squared = Mean(array1.map(function (value, index, array) {return value**2}));  
+  var numerator = mean_xy -(mean_x*mean_y);
+  var denominator = mean_x_squared - (mean_x**2);
+  var slope = numerator/denominator;
+  var intercept = mean_y - (slope*mean_x);
   return [slope, intercept]
 }   
  
