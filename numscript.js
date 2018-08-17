@@ -178,9 +178,12 @@ LinearRegression([1,2,3],[2,4,6])
   var slope = numerator/denominator;
   var intercept = mean_y - (slope*mean_x);
   var calculated_y = array1.map(function(value,index, array){ return (slope*value)+intercept});
-  var diff_y_squared = calculated_y.map(function(value,index,array){ return (array[index] -value )**2});
-  console.log(diff_y)
-  return [slope, intercept]
+  var diff_calculated_squared = calculated_y.map(function(value,index,array){ return (value - mean_y )**2});
+  var ESS = diff_calculated_squared.reduce(function (total, value, index, array) {return total + value});
+  var diff_y_squared = array2.map(function(value,index,array){ return (value - mean_y )**2});
+  var RSS = diff_y_squared.reduce(function (total, value, index, array) {return total + value});
+  var R_squared = ESS/RSS
+  return [slope, intercept, R_squared]
 }   
  
 function Histogram(array, CanvasId, color = "#592A71", padding = 0.95) //draw distribution for array in canvas
