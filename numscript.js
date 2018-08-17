@@ -164,7 +164,7 @@ Frequency([1,2,2,3,3,3])
 function LinearRegression(array1, array2) //returns slope and intercept for two arrays
 /*
 LinearRegression([1,2,3],[2,4,6])
-[0, 2]
+{Slope: 2, Intercept: 0, R_squared: 1}
 */
 {
   var slope;
@@ -183,7 +183,7 @@ LinearRegression([1,2,3],[2,4,6])
   var diff_y_squared = array2.map(function(value,index,array){ return (value - mean_y )**2});
   var RSS = diff_y_squared.reduce(function (total, value, index, array) {return total + value});
   var R_squared = ESS/RSS
-  return [slope, intercept, R_squared]
+  return {'Slope':slope, 'Intercept':intercept, 'R_squared':R_squared}
 }   
  
 function Histogram(array, CanvasId, color = "#592A71", padding = 0.95) //draw distribution for array in canvas
