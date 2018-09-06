@@ -40,8 +40,8 @@ Normalize([-5,2,3])
 (3) [0, 0.875, 1]
 */
 {
-  var min = Math.min.apply(null, array);
-  var max = Math.max.apply(null, array);
+  var min = Math.min.(...array); 
+  var max = Math.max.(...array);
   var diff = max - min;
   var result = array.map(function (value, index, array)
   {
@@ -202,7 +202,7 @@ Needs to be done number of bins parameter for continuous values
   var height = c.height
   var values = Object.values(frequency)
   var keys = Object.keys(frequency)
-  var max = Math.max.apply(null, values)
+  var max = Math.max(...values)
   var key_height = (height/max)* padding
   var key_width = width/values.length
   var small_diff = (key_width - (key_width * padding))/2
@@ -236,10 +236,10 @@ Lots of work here
   ctx.moveTo(0, y_line);
   ctx.lineTo(width, y_line);
   ctx.stroke();
-  var max_x = Math.max.apply(null, X);
-  var min_x = Math.min.apply(null, X);
-  var max_y = Math.max.apply(null, Y);
-  var min_y = Math.min.apply(null, Y);
+  var max_x = Math.max(...X);
+  var min_x = Math.min(...X);
+  var max_y = Math.max(...Y);
+  var min_y = Math.min(...Y);
   var NormX = X.map(function (value, index, array) {return ((value/max_x) * (width*0.90)) + x_line});
   var NormY = Y.map(function (value, index, array) {return  (height - ((value/max_y)*height*0.90)) + (y_line*0.05)});
   for (i in NormX)
@@ -273,7 +273,7 @@ Lots of work here
   var height = c.height
   var x_line = width * 0.05
   var y_line = height * 0.95
-  var max_y = Math.max.apply(null, Y);
+  var max_y = Math.max(...Y);
   var NormY  = Y.map(function (value, index, array) {return  height - (height * ((value*0.95)/max_y))});
   var NormX = X.map(function(value, index, array){ return (value/X.length)*width})
   console.log(NormY);
@@ -306,7 +306,7 @@ var height = c.height
 var values = Object.values(object)
 var sum = values.reduce(function (total, value, index, array) {return total + value} );
 var sum = 2/sum
-var min = Math.min.apply(null, [width/2, height/2])
+var min = Math.min(...[width/2, height/2])
 var keys = Object.keys(object)
 var NormValues = values.map(function(value, index, array){ return value * sum})
 var startAngle = 0
