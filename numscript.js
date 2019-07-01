@@ -1,6 +1,21 @@
 /* staticstics function to get more info from arrays
 also visualisation of data in canvas
 */
+
+/*
+needs to be implemented dot product and cosinus distance
+something like below
+var array1 = [1,2,3,4];
+var array2 = [5,6,7,8];
+var array3 = array1.map(function (num, idx) {
+  return num * array2[idx];
+}); 
+function sum(i,j)
+{
+	return i + j;
+} 
+var txt = array3.reduce(sum).toString();
+*/
 function Reshape(array, reshape)// change flatten array to nested array
 /*
 Reshape([1,2,3,4],2)
