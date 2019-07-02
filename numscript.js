@@ -1,27 +1,12 @@
 /* staticstics function to get more info from arrays
 also visualisation of data in canvas
 */
-
-/*
-needs to be implemented dot product and cosinus distance
-something like below
-var array1 = [1,2,3,4];
-var array2 = [5,6,7,8];
-var array3 = array1.map(function (num, idx) {
-  return num * array2[idx];
-}); 
-function sum(i,j)
-{
-	return i + j;
-} 
-var txt = array3.reduce(sum).toString();
-*/
-function Sum(array)
+function Sum(array) //sum array
 {
   return array.reduce((i, j) => i +j );
 }
 
-function DotProduct(array1, array2)
+function DotProduct(array1, array2) // dot product "vectors" (arrays)
 {
   var array = array1.map(function (num, idx) {
   return num * array2[idx];
@@ -29,10 +14,18 @@ function DotProduct(array1, array2)
   return Sum(array);
 }
 
-function VecLength(array)
+function VecLength(array) // lenght of vector (arrays)
 {
-  return array.forEach(function
+  return Math.sqrt(Sum(array.map(value => value * value)));
 }
+
+function CosineDistance(array1, array2)
+{  
+  var dotProduct = DotProduct(array1, array2);
+  var denominator = VecLength(array1) * VecLength(array2);
+  return dotProduct/denominator;
+}
+
 function Reshape(array, reshape)// change flatten array to nested array
 /*
 Reshape([1,2,3,4],2)
