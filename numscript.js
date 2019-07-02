@@ -19,7 +19,7 @@ function VecLength(array) // lenght of vector (arrays)
   return Math.sqrt(Sum(array.map(value => value * value)));
 }
 
-function CosineDistance(array1, array2)
+function CosineDistance(array1, array2) // cosine distance between vector (arrays)
 {  
   var dotProduct = DotProduct(array1, array2);
   var denominator = VecLength(array1) * VecLength(array2);
