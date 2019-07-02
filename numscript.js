@@ -16,6 +16,18 @@ function sum(i,j)
 } 
 var txt = array3.reduce(sum).toString();
 */
+function DotProduct(array_1, array_2)
+{
+  var array = array_1.map(function (num, idx) {
+  return num * array_2[idx];
+  }); 
+  function sum(i,j)
+  {
+	return i + j;
+  } 
+  return array.reduce(sum);
+}
+
 function Reshape(array, reshape)// change flatten array to nested array
 /*
 Reshape([1,2,3,4],2)
